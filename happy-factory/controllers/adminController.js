@@ -123,7 +123,10 @@ exports.deleteReview = async (req, res) => {
 exports.createProduct = async (req, res) => {
     try {
         let imagenUrl = '';
-        if (req.file) imagenUrl = `/uploads/${req.file.filename}`;
+        
+        // ✨ EL CAMBIO MAGICO ESTÁ AQUÍ ✨
+        // Si hay un archivo, usamos la ruta segura que nos da Cloudinary
+        if (req.file) imagenUrl = req.file.path;
         else imagenUrl = req.body.imagenUrl || '';
 
         const productData = { ...req.body, imagenUrl };
@@ -141,7 +144,10 @@ exports.createProduct = async (req, res) => {
 exports.updateProduct = async (req, res) => {
     try {
         let updateData = { ...req.body };
-        if (req.file) updateData.imagenUrl = `/uploads/${req.file.filename}`;
+        
+        // ✨ Y TAMBIÉN AQUÍ ✨
+        if (req.file) updateData.imagenUrl = req.file.path;
+        
         if (typeof updateData.variaciones === 'string') updateData.variaciones = JSON.parse(updateData.variaciones);
         if (typeof updateData.sucursales === 'string') updateData.sucursales = JSON.parse(updateData.sucursales);
         
