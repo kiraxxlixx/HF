@@ -60,3 +60,8 @@ Thumbs.db
 *.sln
 *.sw?
 
+# =========================
+# Archivos subidos por usuarios
+# =========================
+happy-factory/uploads/*
+!happy-factory/uploads/.gitkeep
