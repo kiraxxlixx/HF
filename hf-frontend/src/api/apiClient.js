@@ -2,8 +2,7 @@
 
 import axios from 'axios';
 
-// 🚨 IMPORTANTE: Reemplaza con la URL base de tu API REST.
-const API_BASE_URL = 'http://localhost:5000/api/v1'; // PUERTO DE TU BACKEND
+const API_BASE_URL = 'https://api.happyfactory.mx/api/v1';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
